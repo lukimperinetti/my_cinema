@@ -1,0 +1,90 @@
+/* general */
+
+* {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+#logo {
+  color: grey;
+}
+h1 span {
+  color: blue;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #e9e9e9;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* NOUVEAU CSS JUSTE POUR LE BOUTON */
+
+* {
+  box-sizing: border-box;
+}
+
+/* barre de recherche */
+form.example input[type="text"] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: right;
+  width: 300px;
+  background: #f1f1f1;
+}
+
+/* bouton*/
+form.example button {
+  float: right;
+  width: 50px;
+  padding: 10px;
+  background: #2196f3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none; /* enlève les bordures doubles */
+  cursor: pointer;
+}
+
+form.example button:hover {
+  background: #0b7dda;
+}
+
+/* Clear floats */
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+nav select {
+  float: left;
+}
+
+#mon_footer {
+  position: absolute;
+  /* bottom: 0; */
+  width: 100%;
+  height: 80px;
+  border: solid black;
+  background-color: azure;
+  text-align: left;
+}
+#mon_footer p {
+  padding-top: 20px;
+  padding-left: 10px;
+}
