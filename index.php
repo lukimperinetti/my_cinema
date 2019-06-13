@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
-<?php require "pdo.php" ?>
+<?php require "liste.php" ?>
 
 <head>
     <title>CinemAdmin</title>
@@ -22,16 +22,20 @@
 
     <nav class="topnav">
         <a href="index.php">Films</a>
-        <a href="membre.php">Membres</a>
+        <!-- <a href="membre.php">Membres</a> -->
         <form class="example" method="post" action="index.php">
             <button type="submit"><i class="fa fa-search"></i></button>
-            <input type="text" placeholder="Rechercher un film" name="search">
-            <input type="hidden" name="form" value="1" />
+            <input type="text" placeholder="Rechercher un film" name="search" value="">
+            <input type="text" placeholder="Rechercher un membre" name="search_member" value="">
             <select name="genre">
                 <?php search_gender($pdo) ?>
             </select>
             <select name="distribution">
                 <?php search_distrib($pdo) ?>
+            </select>
+            <select name="type">
+                <option value="nom">Nom</option>
+                <option value="prenom">Prenom</option>
             </select>
         </form>
     </nav>
@@ -39,12 +43,12 @@
     <!-- corps -->
 
     <section id="films">
-        <?php affiche_genre($pdo) ?>
-        <?php affiche_name($pdo) ?>
+        <?php require "affich_name.php" ?>
+        <?php require "affich_genre.php" ?>
+        <?php require "affich_distrib.php" ?>
+        <?php require "affiche_membre_name.php" ?>
     </section>
-    <!-- <section id="membres">
 
-    </section> -->
 
     <!-- footer -->
 
