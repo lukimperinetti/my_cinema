@@ -15,7 +15,7 @@
 
     <header>
         <h1 id="logo">CinemAdmin <span id="blue"> !</span></h1>
-        <p>La solution pour votre cinéma</p>
+        <p>Recherche global</p>
     </header>
 
     <!-- barre de navigation -->
@@ -25,8 +25,8 @@
         <!-- <a href="membre.php">Membres</a> -->
         <form class="example" method="post" action="index.php">
             <button type="submit"><i class="fa fa-search"></i></button>
-            <input type="text" placeholder="Rechercher un film" name="search" value="">
-            <input type="text" placeholder="Rechercher un membre" name="search_member" value="">
+            <input type="text" placeholder="Rechercher un film" name="search">
+            <input type="text" placeholder="Rechercher un membre" name="search_member">
             <select name="genre">
                 <?php search_gender($pdo) ?>
             </select>
@@ -46,7 +46,11 @@
         <?php require "affich_name.php" ?>
         <?php require "affich_genre.php" ?>
         <?php require "affich_distrib.php" ?>
-        <?php require "affiche_membre_name.php" ?>
+        <form class="test" action="index_manag_membre.php" method="post" >
+            <ul name="mes_membres" >
+                <?php require "affiche_membre_name.php" ?>
+            </ul>
+        </form>
     </section>
 
 

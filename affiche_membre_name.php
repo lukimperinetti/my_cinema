@@ -26,29 +26,31 @@ try {
 ?>
 
 <?php
-    $nom_membre = $_POST['search_member'];
-    if ($nom_membre == "")
-    {
-        echo "";
-    } elseif($_POST['type'] == "nom") {
-        $reponse_nom_membre = $pdo->query("SELECT * FROM fiche_personne WHERE nom like '%$nom_membre%'");
-        while ($donnees = $reponse_nom_membre->fetch()) {
-            ?>
-            <p>
-                <strong>Monsieur ou madame</strong> : <?php echo $donnees["nom"]." ".$donnees["prenom"]." ".$donnees["date_naissance"]." ".$donnees["email"]." ".$donnees["adresse"]." ".$donnees["cpostal"]." ".$donnees["ville"]." ".$donnees["pays"]?><br />
-            </p>
-        <?php
-    }
-    $reponse_nom_membre->closeCursor();
-    } elseif($_POST['type'] == "prenom") {
-        $reponse_prenom_membre = $pdo->query("SELECT * FROM fiche_personne WHERE prenom like '%$prenom_membre%'");
-        while ($donnees = $reponse_prenom_membre->fetch()) {
-            ?>
-            <p>
-                <strong>Monsieur ou madame</strong> : <?php echo $donnees["prenom"]." ".$donnees["nom"]." ".$donnees["date_naissance"]." ".$donnees["email"]." ".$donnees["adresse"]." ".$donnees["cpostal"]." ".$donnees["ville"]." ".$donnees["pays"]?><br />
-            </p>
-        <?php
-    }
-    $reponse_prenom_membre->closeCursor();
-    }
+
+$nom_membre = $_POST['search_member'];
+if ($nom_membre == "") {
+    echo "";
+} elseif ($_POST['type'] == "nom") {
+    $reponse_nom_membre = $pdo->query("SELECT * FROM fiche_personne WHERE nom like '%$nom_membre%'");
+    while ($donnees = $reponse_nom_membre->fetch()) {
+        ?>
+            <li value="<?= $donnees['id_perso'] ?>"> <a href="index_manag_membre.php"><?= $donnees['nom']." ".$donnees['prenom'];?></a><br><br></li>
+    <?php 
+}
+$reponse_nom_membre->closeCursor();
+}
+
+
+$prenom_membre = $_POST['search_member'];
+if ($prenom_membre == "") {
+    echo "";
+} elseif ($_POST['type'] == "prenom") {
+    $reponse_prenom_membre = $pdo->query("SELECT * FROM fiche_personne WHERE prenom like '%$prenom_membre%'");
+    while ($donnees = $reponse_prenom_membre->fetch()) {
+        ?>
+            <li value="<?= $donnees['id_perso'] ?>"> <a href="index_manag_membre.php"><?= $donnees['nom']." ".$donnees['prenom'];?></a><br><br></li>
+    <?php
+}
+$reponse_prenom_membre->closeCursor();
+}
 ?>
