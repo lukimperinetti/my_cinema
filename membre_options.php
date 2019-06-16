@@ -29,24 +29,39 @@ try {
 
 
 <?php
-$id_members = $_POST["mes_membres"];
-$nom_membre = $pdo->query("SELECT nom FROM fiche_personne WHERE nom = '$donnees'");
-
-while ($donnees = $nom_membre->fetch()) {
-        ?>
-        <p>
-            <strong>Film</strong> : <?php echo $donnees['titre']; ?><br />
-        </p>
-    <?php
-}
-$nom_membre->closeCursor();
+$id_members = $_GET["profile"];
+$nom_membre = $pdo->query("SELECT * FROM fiche_personne WHERE id_perso = '$id_members'");
 
 while ($donnees = $nom_membre->fetch()) {
     ?>
+    <p><strong>Nom</strong> : <?php echo $donnees['nom']; ?><br></p>
+    <p><strong>Prenom</strong> : <?php echo $donnees['prenom']; ?><br></p>
+    <?php
+    $nom_membre->closeCursor();
+    ?>
+
     <p>
-        <strong>Monsieur ou madame</strong> : <?php echo $donnees['nom'];?><br />
+        <strong>Abonnement</strong> :
+        <?php
+        $abonnement = $pdo->query("SELECT abonnement.nom FROM abonnement INNER JOIN membre ON abonnement.id_abo = membre.id_abo INNER JOIN fiche_personne ON fiche_personne.id_perso = membre.id_fiche_perso WHERE membre.id_abo = $id_members"); //ICI JE FAIS MAIS QUERY POUR RECCUPERER L'ABONNEMNT
+        while ($donnees_1 = $abonnement->fetch()) {
+            echo $donnees_1['id_abo'];
+            var_dump($donnees_1);
+        }
+        $abonnement->closeCursor();
+        ?><br>
     </p>
-    <li value="<?= $donnees['nom'] ?>"> <a href="index_manag_membre.php"><?= $donnees['nom'] . " " . $donnees['prenom']; ?></a><br><br></li>
+
+
+<?php
+}
+
+while ($donnees = $reponse_nom_membre->fetch()) {
+    ?>
+    <p>
+        <strong>Monsieur ou madame</strong> : <?php echo $donnees['nom']; ?><br />
+    </p>
+    <li> <a href="index_manag_membre.php?profile=<?= $donnees['id_perso'] ?>"><?= $donnees['nom'] . " " . $donnees['prenom']; ?></a><br><br></li>
 <?php
 }
 

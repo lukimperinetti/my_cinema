@@ -26,6 +26,9 @@
     <!-- corps -->
 
     <section id="films">
+        <?php
+        var_dump($_GET);
+        ?>
         <?php require "membre_options.php" ?>
     </section>
 

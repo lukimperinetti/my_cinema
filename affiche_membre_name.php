@@ -34,7 +34,7 @@ if ($nom_membre == "") {
     $reponse_nom_membre = $pdo->query("SELECT * FROM fiche_personne WHERE nom like '%$nom_membre%'");
     while ($donnees = $reponse_nom_membre->fetch()) {
         ?>
-            <li value="<?= $donnees['id_perso'] ?>"> <a href="index_manag_membre.php"><?= $donnees['nom']." ".$donnees['prenom'];?></a><br><br></li>
+            <li> <a href="index_manag_membre.php?profile=<?= $donnees['id_perso'] ?>"><?= $donnees['nom']." ".$donnees['prenom'];?></a><br><br></li>
     <?php 
 }
 $reponse_nom_membre->closeCursor();
@@ -48,7 +48,7 @@ if ($prenom_membre == "") {
     $reponse_prenom_membre = $pdo->query("SELECT * FROM fiche_personne WHERE prenom like '%$prenom_membre%'");
     while ($donnees = $reponse_prenom_membre->fetch()) {
         ?>
-            <li value="<?= $donnees['id_perso'] ?>"> <a href="index_manag_membre.php"><?= $donnees['nom']." ".$donnees['prenom'];?></a><br><br></li>
+            <li> <a href="index_manag_membre.php?profile=<?= $donnees['id_perso'] ?>"><?= $donnees['nom']." ".$donnees['prenom'];?></a><br><br></li>
     <?php
 }
 $reponse_prenom_membre->closeCursor();

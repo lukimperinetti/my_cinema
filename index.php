@@ -47,7 +47,7 @@
         <?php require "affich_genre.php" ?>
         <?php require "affich_distrib.php" ?>
         <form class="test" action="index_manag_membre.php" method="post" >
-            <ul name="mes_membres" >
+            <ul name="mes_membres">
                 <?php require "affiche_membre_name.php" ?>
             </ul>
         </form>
